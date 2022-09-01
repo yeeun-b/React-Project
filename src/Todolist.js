@@ -1,9 +1,16 @@
 import React from "react";
+// import useState from "react";
+import './Todolist.css';
+import TodoInsert from './TodoInsert';
 
-function Todolist(){
-    return(
-        <h5>Todolist</h5>
+const TodoList = ({todos}) => {
+    return (
+        <div className="TodoTemplate">
+            <div className="Todo-title">TodoList</div>
+            <div className="content">{todos}</div>
+            <TodoInsert />
+        </div>
     );
-}
+};
 
-export default Todolist;
+export default TodoList;
