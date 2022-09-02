@@ -1,12 +1,13 @@
 import './TodoListList.css';
 import TodoListItem from './TodoListItem';
 
-const TodoListList = () => {
+const TodoListList = ({todos}) => {
+    // ↑ TodoList에서 받아온 todos
     return(
         <div className="TodoListList">
-            <TodoListItem />
-            <TodoListItem />
-            <TodoListItem />
+            {todos.map(todo => (
+                <TodoListItem todo={todo} key={todo.id}/>
+            ))}
         </div>
     );
 };
