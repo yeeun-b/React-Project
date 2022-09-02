@@ -8,7 +8,7 @@ const TodoList = ({todos}) => {
         <div className="TodoTemplate">
             <div className="Todo-title">TodoList</div>
             <div className="content">{todos}</div>
-            <TodoInsert />
+            <TodoInsert /> {/* 할 일 추가하는 페이지 */}
         </div>
     );
 };
