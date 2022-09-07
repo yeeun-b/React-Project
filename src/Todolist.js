@@ -25,6 +25,18 @@ const TodoList = () => {
         },
     ]);
 
+    // 체크박스에 체크하는 기능
+    const onToggle = useCallback(
+        id => {
+            setTodos(
+                todos.map(todo =>
+                    todos.id === id ? { ...todo, checked: !todo.checked} : todo,
+                    ),
+            );
+        },
+        [todos],
+    );
+
     // 지우기 기능
     const onRemove = useCallback(
         id => { // 같은 id를 가진 항목을 배열에서 지움
@@ -54,7 +66,7 @@ const TodoList = () => {
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
-            <TodoListList todos={todos} onRemove={onRemove}/> {/* 리스트 출력하는 페이지 */}
+            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}/> {/* 리스트 출력하는 페이지 */}
             {/* </div> */}
         </div>
     );
