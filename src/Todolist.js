@@ -25,6 +25,14 @@ const TodoList = () => {
         },
     ]);
 
+    // 지우기 기능
+    const onRemove = useCallback(
+        id => { // 같은 id를 가진 항목을 배열에서 지움
+            setTodos(todos.filter(todo => todo.id !== id));
+        },
+        [todos],
+    );
+
     // 고유값으로 사용될 id
     const nextId = useRef(4);
 
@@ -46,7 +54,7 @@ const TodoList = () => {
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
-            <TodoListList todos={todos}/> {/* 리스트 출력하는 페이지 */}
+            <TodoListList todos={todos} onRemove={onRemove}/> {/* 리스트 출력하는 페이지 */}
             {/* </div> */}
         </div>
     );
