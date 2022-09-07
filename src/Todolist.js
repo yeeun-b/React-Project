@@ -1,6 +1,6 @@
 import React from "react";
 import {useState, useRef, useCallback} from "react";
-import './Todolist.css';
+import './TodoList.css';
 import TodoInsert from './TodoInsert'; // 할 일 추가하는 페이지
 import TodoListList from "./TodoListList"; // 할 일 목록
 
@@ -29,6 +29,8 @@ const TodoList = () => {
     const onToggle = useCallback(
         id => {
             setTodos(
+                // map()을 이용해 todo의 id가 인자로 받은 id와 같다면
+                // 기존 객체를 복사해와서 기존 id와 text 정보는 유지하고 checked 상태만 변경
                 todos.map(todo =>
                     todo.id === id ? { ...todo, checked: !todo.checked } : todo,
                     ),
