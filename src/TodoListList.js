@@ -6,7 +6,11 @@ const TodoListList = ({todos, onRemove, onToggle}) => {
     return(
         <div className="TodoListList">
             {todos.map(todo => (
-                <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle}/>
+                <TodoListItem 
+                todo={todo} 
+                key={todo.id} 
+                onRemove={onRemove} 
+                onToggle={onToggle}/>
             ))}
         </div>
     );

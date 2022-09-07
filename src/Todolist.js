@@ -30,7 +30,7 @@ const TodoList = () => {
         id => {
             setTodos(
                 todos.map(todo =>
-                    todos.id === id ? { ...todo, checked: !todo.checked} : todo,
+                    todo.id === id ? { ...todo, checked: !todo.checked } : todo,
                     ),
             );
         },
