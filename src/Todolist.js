@@ -96,7 +96,7 @@ const TodoList = () => {
             <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}
             onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
             {insertToggle && (
-                <TodoEdit onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}
+                <TodoEdit onInsert={onInsert} insertToggle={insertToggle} selectedTodo={selectedTodo}
                 onUpdate={onUpdate}/>
             )}
             {/* </div> */}
