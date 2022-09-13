@@ -1,5 +1,5 @@
 import './TodoEdit.scss';
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 const TodoEdit = ({selectedTodo, onUpdated, onInsertToggle, onChangeSelectedTodo}) => {
     const [value, setValue] = useState('');
@@ -13,6 +13,14 @@ const TodoEdit = ({selectedTodo, onUpdated, onInsertToggle, onChangeSelectedTodo
         // 새로고침 방지
         e.preventDefault();
     },[value],);
+
+    // todoListItem 클릭했을 때 해당 todo객체의 text 내용이 input에 뜨게 하기 위해
+    // useEffect 사용
+    useEffect(() => {
+        if (selectedTodo) {
+            setValue(selectedTodo.text);
+        }
+    }, [selectedTodo]);
 
     return(
         <div className="EditBacktround">

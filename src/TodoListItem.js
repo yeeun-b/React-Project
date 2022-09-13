@@ -14,7 +14,10 @@ const TodoListItem = ({todo, onRemove, onToggle, onInsertToggle, onChangeSelecte
                 <div className="text">{text}</div>
             </div>
             {/* 수정 버튼 */}
-            <div className="edit">
+            <div className="edit" onClick={() => {
+                onChangeSelectedTodo(todo)
+                onInsertToggle();
+            }}>
                 {/* 클릭 시 id를 기준으로 항목 삭제하는 함수 호출 */}
                 <MdModeEditOutline />
             </div>
