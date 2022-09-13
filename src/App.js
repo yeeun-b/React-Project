@@ -1,7 +1,7 @@
 import './App.css';
 import Main from './Main';
 import TodoList from './todolist/TodoList';
-import Catdog from './Catdog';
+import Catdog from './catdog/Catdog';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
