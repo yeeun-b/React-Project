@@ -5,6 +5,13 @@ function Catdog(){
 
     const [url, setUrl] = useState('');
 
+    // 고양이 이미지 리스트
+    const catList = [
+        {img: 'https://cdn2.thecatapi.com/images/6qi.jpg'},
+        {img: 'https://cdn2.thecatapi.com/images/cgo.jpg'},
+        {img: 'https://cdn2.thecatapi.com/images/7gk.jpg'}
+    ]
+
     function CatData(){
         fetch('https://api.thecatapi.com/v1/images/search')
         .then(res => {
@@ -34,11 +41,16 @@ function Catdog(){
         <div className="CatdogDiv"> 
             <h5>🐱Cat & Dog🐶</h5>
             <div className="CatdogButtonDiv">
+                {/* 버튼 클릭하면 */}
                 <button className="CatButton" onClick={CatData}> Cat </button>
                 <button className="DogButton" onClick={DogData}> Dog </button>
             </div>
             <div className="CatdogImgDiv">
-                <img src={url} className="CatImg" />
+                {/* 리스트 매핑 */}
+                {catList.map(cat => {
+                    return <img src={cat.img} />
+                })}
+                {/* <img src={url} className="CatDogImg" /> */}
             </div>
         </div>
     );

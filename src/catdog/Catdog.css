@@ -16,9 +16,17 @@
     background: white;
     margin-right: 5px;
 }
+.CatButton:hover{
+    background: rgb(245, 245, 245);
+    font-weight:bold;
+}
 .DogButton{
     width: 100px;
     height: 30px;
     background: white;
     margin-left: 5px;
+}
+.DogButton:hover{
+    background: rgb(245, 245, 245);
+    font-weight:bold;
 }
