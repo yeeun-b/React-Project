@@ -2,7 +2,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline, MdModeEditOu
 import './TodoListItem.scss';
 import cn from 'classnames';
 
-const TodoListItem = ({todo, onRemove, onToggle}) => {
+const TodoListItem = ({todo, onRemove, onToggle, onInsertToggle, onChangeSelectedTodo}) => {
     const {id, text, checked} = todo; // id도 추가함
 
     return(

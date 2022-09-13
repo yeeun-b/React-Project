@@ -1,7 +1,7 @@
 import './TodoEdit.scss';
 import {useCallback, useState} from "react";
 
-const TodoEdit = ({selectedTodo, onUpdated}) => {
+const TodoEdit = ({selectedTodo, onUpdated, onInsertToggle, onChangeSelectedTodo}) => {
     const [value, setValue] = useState('');
 
     const onChange = useCallback((e) => {
