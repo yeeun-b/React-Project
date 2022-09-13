@@ -41,3 +41,14 @@
 .remove:hover{
     color: #696df5;
 }
+.edit{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #353ad4;
+    cursor: pointer;
+    margin-right: 3px;
+}
+.edit:hover{
+    color: #696df5;
+}
