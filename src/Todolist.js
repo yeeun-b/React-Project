@@ -66,7 +66,7 @@ const TodoList = () => {
 
     // 클릭한 항목의 todo 객체를 가져올 때 사용
     const [selectedTodo, setSelectedTodo] = useState(null);
-    // 팝업창 보여주는 기능
+    // 수정 창 보여주는 기능
     const [insertToggle, setInsertToggle] = useState(false);
     // 일정 클릭했을 때 insertToggle이 true로 바뀌는 함수
     const onInsertToggle = () => {
@@ -80,6 +80,14 @@ const TodoList = () => {
         setSelectedTodo(todo);
     };
 
+    // 텍스트 변경
+    const onUpdate = (id, text) => {
+        onInsertToggle(); // 수정 창 꺼주는 역할
+        // map() -> 각 todo의 id가 인자로 받은 id와 동일할 경우
+        // 기존 id와 checked는 유지하고 text만 업데이트 해주기
+        setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text} : todo)));
+    }
+
     return (
         <div className="TodoTemplate">
             <div className="Todo-title">TodoList</div>
@@ -88,7 +96,8 @@ const TodoList = () => {
             <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}
             onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
             {insertToggle && (
-                <TodoEdit onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/>
+                <TodoEdit onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}
+                onUpdate={onUpdate}/>
             )}
             {/* </div> */}
         </div>
