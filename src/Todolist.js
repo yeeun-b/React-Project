@@ -64,17 +64,31 @@ const TodoList = () => {
         [todos],
     );
 
+    // 클릭한 항목의 todo 객체를 가져올 때 사용
+    const [selectedTodo, setSelectedTodo] = useState(null);
     // 팝업창 보여주는 기능
     const [insertToggle, setInsertToggle] = useState(false);
+    // 일정 클릭했을 때 insertToggle이 true로 바뀌는 함수
+    const onInsertToggle = () => {
+        if (selectedTodo){
+            setSelectedTodo(null);
+        }
+        setInsertToggle((prev) => !prev);
+    };
+    // 수정 버튼 눌렀을 때 onClick으로 넣어줄 함수
+    const onChangeSelectedTodo = (todo) => {
+        setSelectedTodo(todo);
+    };
 
     return (
         <div className="TodoTemplate">
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
-            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}/> {/* 리스트 출력하는 페이지 */}
+            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}
+            onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
             {insertToggle && (
-                <TodoEdit />
+                <TodoEdit onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/>
             )}
             {/* </div> */}
         </div>
