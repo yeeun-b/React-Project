@@ -1,4 +1,4 @@
-.TodoInsert {
+.background {
     display: flex;
     background: #495057;
     input {
@@ -6,7 +6,8 @@
       background: none;
       outline: none;
       border: none;
-      padding: 0.5rem;
+      padding: 0.7rem;
+      padding-left: 1rem;
       font-size: 1.125rem;
       line-height: 1.5;
       color: white;
@@ -15,7 +16,6 @@
       }
     }
     button {
-      background: none;
       outline: none;
       border: none;
       background: #868e96;
@@ -29,5 +29,9 @@
       &:hover {
         background: #adb5bd;
       }
+    }
+    .todoEditInsert{
+        display: flex;
+        flex: 1 1;
     }
   }

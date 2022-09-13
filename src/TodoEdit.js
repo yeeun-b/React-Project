@@ -1,5 +1,6 @@
 import './TodoEdit.scss';
 import {useCallback, useEffect, useState} from "react";
+import { MdModeEditOutline } from "react-icons/md";
 
 const TodoEdit = ({selectedTodo, onUpdated, onInsertToggle, onChangeSelectedTodo}) => {
     const [value, setValue] = useState('');
@@ -23,15 +24,14 @@ const TodoEdit = ({selectedTodo, onUpdated, onInsertToggle, onChangeSelectedTodo
     }, [selectedTodo]);
 
     return(
-        <div className="EditBacktround">
+        <div className="background">
             <form onSubmit={onSubmit} className="todoEditInsert">
-                <h2>수정하기</h2>
                 <input
                     onChange={onChange}
                     value={value}
                     placeholder="할 일 수정하기"
                 ></input>
-                <button type="submit">수정하기</button>
+                <button type="submit"><MdModeEditOutline /></button>
             </form>
         </div>
     );
