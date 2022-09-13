@@ -48,7 +48,7 @@ const TodoList = () => {
     );
 
     // 고유값으로 사용될 id
-    const nextId = useRef(4);
+    const nextId = useRef(4); // 기본값이 3개 들어가 있으니 초기값을 4로 설정
 
     const onInsert = useCallback(
         text => {
