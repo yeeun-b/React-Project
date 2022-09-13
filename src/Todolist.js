@@ -3,6 +3,7 @@ import {useState, useRef, useCallback} from "react";
 import './TodoList.css';
 import TodoInsert from './TodoInsert'; // 할 일 추가하는 페이지
 import TodoListList from "./TodoListList"; // 할 일 목록
+import TodoEdit from "./TodoEdit"; // 할 일 수정하기
 
 const TodoList = () => {
     const [todos, setTodos] = useState([
@@ -63,12 +64,18 @@ const TodoList = () => {
         [todos],
     );
 
+    // 팝업창 보여주는 기능
+    const [insertToggle, setInsertToggle] = useState(false);
+
     return (
         <div className="TodoTemplate">
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
             <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}/> {/* 리스트 출력하는 페이지 */}
+            {insertToggle && (
+                <TodoEdit />
+            )}
             {/* </div> */}
         </div>
     );
