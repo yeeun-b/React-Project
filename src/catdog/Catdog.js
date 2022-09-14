@@ -12,6 +12,7 @@ function Catdog(){
         {img: 'https://cdn2.thecatapi.com/images/7gk.jpg'}
     ]
 
+    // Cat API
     function CatData(){
         fetch('https://api.thecatapi.com/v1/images/search')
         .then(res => {
@@ -24,6 +25,8 @@ function Catdog(){
             setUrl(jsonRes[0].url)
         })
     }
+
+    // Dog API
     function DogData(){
         fetch('https://api.thedogapi.com/v1/images/search')
         .then(res => {
@@ -41,7 +44,7 @@ function Catdog(){
         <div className="CatdogDiv"> 
             <h5>🐱Cat & Dog🐶</h5>
             <div className="CatdogButtonDiv">
-                {/* 버튼 클릭하면 */}
+                {/* 버튼 클릭하면 API 요청*/}
                 <button className="CatButton" onClick={CatData}> Cat </button>
                 <button className="DogButton" onClick={DogData}> Dog </button>
             </div>
