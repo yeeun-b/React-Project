@@ -11,7 +11,7 @@ function Catdog(){
     //     {img: 'https://cdn2.thecatapi.com/images/7gk.jpg'}
     // ]
     const [catList, setCatList] = useState([]);
-    var count = 0;
+
     // Cat API
     function CatData(){
         fetch('https://api.thecatapi.com/v1/images/search')
