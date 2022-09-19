@@ -5,8 +5,10 @@
 .CatdogButtonDiv{
     text-align: center;
 }
+.CatdogImgDiv {
+    padding: 1rem;
+}
 .CatdogImgDiv img{
-    padding: 2rem;
     width: 200px;
     height: 200px;
 }
