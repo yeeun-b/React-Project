@@ -1,16 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import './Catdog.css';
 
 function Catdog(){
 
     const [url, setUrl] = useState('');
     // 고양이 이미지 리스트
-    // const catList = [
-    //     {img: 'https://cdn2.thecatapi.com/images/6qi.jpg'},
-    //     {img: 'https://cdn2.thecatapi.com/images/cgo.jpg'},
-    //     {img: 'https://cdn2.thecatapi.com/images/7gk.jpg'}
-    // ]
     const [catList, setCatList] = useState([]);
+    // id 초기값은 0으로 설정
+    // const nextCatId = useRef(0);
 
     // Cat API
     function CatData(){
@@ -23,10 +20,17 @@ function Catdog(){
         }, networkError => console.log(networkError.message)
         ).then(jsonRes => {
             // setUrl(jsonRes[0].url)
-            // catList에 값 추가
-            console.log(jsonRes[0].url);
-            setCatList([...catList, jsonRes[0].url]);
-            console.log(catList.length, catList[0]);
+            console.log("요청 값 : ", jsonRes[0].url);
+            const catUrl = {
+                // id : nextCatId.current,
+                url : jsonRes[0].url
+            };
+            // catList에 url값 추가
+            // setCatList([...catList, jsonRes[0].url]);
+            setCatList(catList.concat(catUrl));
+            console.log(catList);
+            // console.log("id : ", nextCatId.current);
+            // nextCatId.current += 1;
         })
     }
 
@@ -55,9 +59,8 @@ function Catdog(){
             <div className="CatdogImgDiv">
                 {/* 리스트 매핑 */}
                 {catList.map(cat => {
-                    return <img src={cat.img} />
+                    return <img src={cat.url} />
                 })}
-                {/* <img src={url} className="CatDogImg" /> */}
             </div>
         </div>
     );
