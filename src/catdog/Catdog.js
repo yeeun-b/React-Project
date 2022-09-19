@@ -1,13 +1,10 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import './Catdog.css';
 
 function Catdog(){
 
-    const [url, setUrl] = useState('');
     // 고양이 이미지 리스트
     const [catList, setCatList] = useState([]);
-    // id 초기값은 0으로 설정
-    // const nextCatId = useRef(0);
 
     // Cat API
     function CatData(){
@@ -19,18 +16,16 @@ function Catdog(){
             throw new Error('요청 실패');
         }, networkError => console.log(networkError.message)
         ).then(jsonRes => {
-            // setUrl(jsonRes[0].url)
+            // jsonRes[0].url : 요청한 값(url)
             console.log("요청 값 : ", jsonRes[0].url);
+
             const catUrl = {
-                // id : nextCatId.current,
                 url : jsonRes[0].url
             };
+
             // catList에 url값 추가
-            // setCatList([...catList, jsonRes[0].url]);
             setCatList(catList.concat(catUrl));
             console.log(catList);
-            // console.log("id : ", nextCatId.current);
-            // nextCatId.current += 1;
         })
     }
 
@@ -44,7 +39,8 @@ function Catdog(){
             throw new Error('요청 실패');
         }, networkError => console.log(networkError.message)
         ).then(jsonRes => {
-            setUrl(jsonRes[0].url)
+            setCatList([]); // 고양이 리스트를 빈 배열로 만들기
+            // setUrl(jsonRes[0].url)
         })
     }
 
