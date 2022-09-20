@@ -5,6 +5,8 @@ function Catdog(){
 
     // 고양이 이미지 리스트
     const [catList, setCatList] = useState([]);
+    // 강아지 이미지 리스트
+    const [dogList, setDogList] = useState([]);
 
     // Cat API
     function CatData(){
@@ -16,9 +18,12 @@ function Catdog(){
             throw new Error('요청 실패');
         }, networkError => console.log(networkError.message)
         ).then(jsonRes => {
+            setDogList([]); // 강아지 리스트를 빈 배열로 만들기
+
             // jsonRes[0].url : 요청한 값(url)
             console.log("요청 값 : ", jsonRes[0].url);
 
+            // url이라는 key로 요청한 값을 넣음
             const catUrl = {
                 url : jsonRes[0].url
             };
@@ -40,7 +45,18 @@ function Catdog(){
         }, networkError => console.log(networkError.message)
         ).then(jsonRes => {
             setCatList([]); // 고양이 리스트를 빈 배열로 만들기
-            // setUrl(jsonRes[0].url)
+
+            // jsonRes[0].url : 요청한 값(url)
+            console.log("요청 값 : ", jsonRes[0].url);
+
+            // url이라는 key로 요청한 값을 넣음
+            const dogUrl = {
+                url : jsonRes[0].url
+            };
+
+            // dogList에 url값 추가
+            setDogList(dogList.concat(dogUrl));
+            console.log(dogList);
         })
     }
 
@@ -56,6 +72,9 @@ function Catdog(){
                 {/* 리스트 매핑 */}
                 {catList.map(cat => {
                     return <img src={cat.url} />
+                })}
+                {dogList.map(dog => {
+                    return <img src={dog.url} />
                 })}
             </div>
         </div>
