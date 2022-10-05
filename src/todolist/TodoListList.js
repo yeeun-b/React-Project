@@ -1,7 +1,7 @@
 import './TodoListList.css';
 import TodoListItem from './TodoListItem';
 
-const TodoListList = ({todos, onRemove, onToggle, onInsertToggle, onChangeSelectedTodo}) => {
+const TodoListList = ({todos, onRemove, onToggle, onDelCheck, onInsertToggle, onChangeSelectedTodo}) => {
     // ↑ TodoList에서 받아온 todos와 onRemove
     return(
         <div className="TodoListList">
@@ -12,7 +12,8 @@ const TodoListList = ({todos, onRemove, onToggle, onInsertToggle, onChangeSelect
                 onRemove={onRemove} 
                 onToggle={onToggle}
                 onInsertToggle={onInsertToggle}
-                onChangeSelectedTodo={onChangeSelectedTodo}/>
+                onChangeSelectedTodo={onChangeSelectedTodo}
+                onDelCheck={onDelCheck}/>
             ))}
         </div>
     );

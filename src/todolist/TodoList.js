@@ -13,16 +13,19 @@ const TodoList = () => {
             id: 1,
             text: '할일 1',
             checked: true,
+            delchecked: false,
         },
         {
             id: 2,
             text: '할일 2',
             checked: true,
+            delchecked: false,
         },
         {
             id: 3,
             text: '할일 3',
             checked: false,
+            delchecked: false,
         },
     ]);
 
@@ -34,6 +37,19 @@ const TodoList = () => {
                 // 기존 객체를 복사해와서 기존 id와 text 정보는 유지하고 checked 상태만 변경
                 todos.map(todo =>
                     todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+                    ),
+            );
+        },
+        [todos],
+    );
+    // 선택 삭제 체크박스에 체크하는 기능
+    const onDelCheck = useCallback(
+        id => {
+            setTodos(
+                // map()을 이용해 todo의 id가 인자로 받은 id와 같다면
+                // 기존 객체를 복사해와서 기존 id와 text 정보는 유지하고 checked 상태만 변경
+                todos.map(todo =>
+                    todo.id === id ? { ...todo, delchecked: !todo.delchecked } : todo,
                     ),
             );
         },
@@ -57,6 +73,7 @@ const TodoList = () => {
                 id: nextId.current,
                 text,
                 checked:false,
+                delchecked:false,
             };
             setTodos(todos.concat(todo));
             nextId.current += 1; // nextId를 1씩 더하기
@@ -93,7 +110,7 @@ const TodoList = () => {
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
-            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle}
+            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} onDelCheck={onDelCheck}
             onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
             {insertToggle && (
                 <TodoEdit onInsert={onInsert} insertToggle={insertToggle} selectedTodo={selectedTodo}
