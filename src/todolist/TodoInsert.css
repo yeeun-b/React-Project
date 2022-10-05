@@ -16,8 +16,7 @@
 .TodoInsert input::placeholder{
     color: #dee2e6;
 }
-.TodoInsert button{
-    background: none;
+.ButtonTodoInsert{
     outline: none;
     border: none;
     background: #868e96;
@@ -28,7 +27,21 @@
     display: flex;
     align-items: center;
 }
-.TodoInsert button:hover{
+.ButtonTodoInsert:hover{
+    background: #adb5bd;
+}
+.ButtonSelDel{
+    outline: none;
+    border: none;
+    background: #666c72;
+    color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.ButtonSelDel:hover{
     background: #adb5bd;
 }
 .ButtonSelDel span{
