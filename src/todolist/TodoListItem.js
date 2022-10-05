@@ -26,6 +26,12 @@ const TodoListItem = ({todo, onRemove, onToggle, onInsertToggle, onChangeSelecte
                 {/* 클릭 시 id를 기준으로 항목 삭제하는 함수 호출 */}
                 <MdRemoveCircleOutline />
             </div>
+            {/* 선택 삭제하는 체크박스 */}
+            {/* checked가 true일 때 checked라는 클래스 추가 */}
+            <div className={cn('deletbox', {checked})} onClick={() => onToggle(id)}>
+                {/* checked가 true면 체크된 아이콘이 / false면 체크되지 않은 아이콘 출력 */}
+                {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            </div>
         </div>
     );
 };

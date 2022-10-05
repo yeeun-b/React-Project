@@ -30,6 +30,25 @@
         }
     }
 }
+.deletbox{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    svg{ /* 아이콘 */
+        font-size: 1.5rem;
+    }
+    /* 체크됐을 때 스타일 */
+    &.checked{
+        svg{
+            color: #191970;
+        }
+        .text{
+            color: #adb5bd;
+            text-decoration: line-through;
+        }
+    }
+}
 
 .remove{
     display: flex;
