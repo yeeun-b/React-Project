@@ -31,3 +31,6 @@
 .TodoInsert button:hover{
     background: #adb5bd;
 }
+.ButtonSelDel span{
+    font-size: 13px;
+}

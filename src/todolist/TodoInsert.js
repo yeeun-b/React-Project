@@ -30,6 +30,9 @@ const TodoInsert =({onInsert})=>{ // TodoList에서 TodoInsert에 넣어준 onIn
             <button type='submit' className='ButtonTodoInsert'>
                 <MdAdd />
             </button>
+            <button type='button' className='ButtonSelDel'>
+                <span>선택<br/>삭제</span>
+            </button>
         </form>
     );
 };
