@@ -44,19 +44,14 @@ const TodoList = () => {
     );
     // 선택 삭제 체크박스에 체크하는 기능
     const [selList, setSelList] = useState([]); // 선택한 항목 번호 담을 리스트
-    const selCheck = useCallback(
-        id => {
-            console.log(id);
-            setTodos(
-                // map()을 이용해 todo의 id가 인자로 받은 id와 같다면
-                // 기존 객체를 복사해와서 기존 id와 text 정보는 유지하고 checked 상태만 변경
-                todos.map(todo =>
-                    todo.id === id ? { ...todo, delchecked: !todo.delchecked } : todo,
-                    ),
-            );
-        },
-        [todos],
-    );
+    // 수정하기
+    const selCheck = (checked, id) => {
+        if(checked){
+            setSelList([...selList, id])
+        } else {
+            setSelList(selList.filter(o=>o!==id))
+        }
+    }
 
     // 지우기 기능
     const onRemove = useCallback(
