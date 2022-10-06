@@ -43,8 +43,10 @@ const TodoList = () => {
         [todos],
     );
     // 선택 삭제 체크박스에 체크하는 기능
-    const onDelCheck = useCallback(
+    const [selList, setSelList] = useState([]); // 선택한 항목 번호 담을 리스트
+    const selCheck = useCallback(
         id => {
+            console.log(id);
             setTodos(
                 // map()을 이용해 todo의 id가 인자로 받은 id와 같다면
                 // 기존 객체를 복사해와서 기존 id와 text 정보는 유지하고 checked 상태만 변경
@@ -60,12 +62,19 @@ const TodoList = () => {
     const onRemove = useCallback(
         id => { // 같은 id를 가진 항목을 배열에서 지움
             setTodos(todos.filter(todo => todo.id !== id));
+            console.log(id);
         },
         [todos],
     );
 
     // 다중 삭제 기능 구현하기
-    
+    const selRemove = useCallback(
+        id => { // 같은 id를 가진 항목을 배열에서 지움
+            setTodos(todos.filter(todo => todo.id !== id));
+            console.log('delete >>>' + id);
+        },
+        [todos],
+    );
 
     // 고유값으로 사용될 id
     const nextId = useRef(4); // 기본값이 3개 들어가 있으니 초기값을 4로 설정
@@ -113,7 +122,7 @@ const TodoList = () => {
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
-            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} onDelCheck={onDelCheck}
+            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} selCheck={selCheck}
             onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
             <button type='button' className='ButtonSelDel'>선택한 항목 삭제하기</button>
             {insertToggle && (

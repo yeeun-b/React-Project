@@ -2,7 +2,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline, MdModeEditOu
 import './TodoListItem.scss';
 import cn from 'classnames';
 
-const TodoListItem = ({todo, onRemove, onToggle, onDelCheck, onInsertToggle, onChangeSelectedTodo}) => {
+const TodoListItem = ({todo, onRemove, onToggle, selCheck, onInsertToggle, onChangeSelectedTodo}) => {
     const {id, text, checked, delchecked} = todo; // id도 추가함
 
     return(
@@ -28,7 +28,7 @@ const TodoListItem = ({todo, onRemove, onToggle, onDelCheck, onInsertToggle, onC
             </div>
             {/* 선택 삭제하는 체크박스 */}
             {/* checked가 true일 때 checked라는 클래스 추가 */}
-            <div className={cn('deletbox', {delchecked})} onClick={() => onDelCheck(id)}>
+            <div className={cn('deletbox', {delchecked})} onClick={() => selCheck(id)}>
                 {/* checked가 true면 체크된 아이콘이 / false면 체크되지 않은 아이콘 출력 */}
                 {delchecked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             </div>
