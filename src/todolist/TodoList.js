@@ -65,6 +65,7 @@ const TodoList = () => {
     );
 
     // 다중 삭제 기능 구현하기
+    
 
     // 고유값으로 사용될 id
     const nextId = useRef(4); // 기본값이 3개 들어가 있으니 초기값을 4로 설정
@@ -114,11 +115,12 @@ const TodoList = () => {
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
             <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} onDelCheck={onDelCheck}
             onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
+            <button type='button' className='ButtonSelDel'>선택한 항목 삭제하기</button>
             {insertToggle && (
                 <TodoEdit onInsert={onInsert} insertToggle={insertToggle} selectedTodo={selectedTodo}
                 onUpdate={onUpdate}/>
             )}
-            {/* </div> */}
+            
         </div>
     );
 };
