@@ -42,16 +42,6 @@ const TodoList = () => {
         },
         [todos],
     );
-    // 선택 삭제 체크박스에 체크하는 기능
-    const [selList, setSelList] = useState([]); // 선택한 항목 번호 담을 리스트
-    // 수정하기
-    const selCheck = (checked, id) => {
-        if(checked){
-            setSelList([...selList, id])
-        } else {
-            setSelList(selList.filter(o=>o!==id))
-        }
-    }
 
     // 지우기 기능
     const onRemove = useCallback(
@@ -61,15 +51,19 @@ const TodoList = () => {
         },
         [todos],
     );
-
-    // 다중 삭제 기능 구현하기
-    const selRemove = useCallback(
-        id => { // 같은 id를 가진 항목을 배열에서 지움
-            setTodos(todos.filter(todo => todo.id !== id));
-            console.log('delete >>>' + id);
-        },
-        [todos],
-    );
+    
+    // 체크된 목록 담을 배열
+    const [checkItems, setCheckItems] = useState([]);
+    // 체크 목록 단일 선택
+    const handleSingleCheck = (checked, id) => {
+        if (checked) {
+            // 체크박스 선택 시 선택된 id 배열에 추가
+            setCheckItems(prev => [...prev, id]);
+        } else {
+            // 체크 해제 시 해제된 id 제외한 배열(필터)
+            setCheckItems(checkItems.filter((el) => el !== id));
+        }
+    };
 
     // 고유값으로 사용될 id
     const nextId = useRef(4); // 기본값이 3개 들어가 있으니 초기값을 4로 설정
@@ -117,8 +111,8 @@ const TodoList = () => {
             <div className="Todo-title">TodoList</div>
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
-            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} selCheck={selCheck}
-            onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo}/> {/* 리스트 출력하는 페이지 */}
+            <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} handleSingleCheck={handleSingleCheck}
+            onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo} checkItem={checkItems}/> {/* 리스트 출력하는 페이지 */}
             <button type='button' className='ButtonSelDel'>선택한 항목 삭제하기</button>
             {insertToggle && (
                 <TodoEdit onInsert={onInsert} insertToggle={insertToggle} selectedTodo={selectedTodo}
