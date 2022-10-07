@@ -47,7 +47,7 @@ const TodoList = () => {
     const onRemove = useCallback(
         id => { // 같은 id를 가진 항목을 배열에서 지움
             setTodos(todos.filter(todo => todo.id !== id));
-            console.log(id);
+            // console.log(id);
         },
         [todos],
     );
@@ -64,6 +64,11 @@ const TodoList = () => {
             setCheckItems(checkItems.filter((el) => el !== id));
         }
     };
+
+    // 선택 삭제 기능
+    const onCheckRemove = (
+        console.log(checkItems)
+    );
 
     // 고유값으로 사용될 id
     const nextId = useRef(4); // 기본값이 3개 들어가 있으니 초기값을 4로 설정
@@ -112,8 +117,8 @@ const TodoList = () => {
             {/* <div className="content"> */}
             <TodoInsert onInsert={onInsert}/> {/* 할 일 추가하는 페이지 */}
             <TodoListList todos={todos} onRemove={onRemove} onToggle={onToggle} handleSingleCheck={handleSingleCheck}
-            onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo} checkItem={checkItems}/> {/* 리스트 출력하는 페이지 */}
-            <button type='button' className='ButtonSelDel'>선택한 항목 삭제하기</button>
+            onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo} /> {/* 리스트 출력하는 페이지 */}
+            <button type='button' className='ButtonSelDel' onClick={onCheckRemove}>선택한 항목 삭제하기</button>
             {insertToggle && (
                 <TodoEdit onInsert={onInsert} insertToggle={insertToggle} selectedTodo={selectedTodo}
                 onUpdate={onUpdate}/>
