@@ -30,7 +30,7 @@ const TodoListItem = ({todo, onRemove, onToggle, handleSingleCheck, onInsertTogg
                 onChange={(e) => handleSingleCheck(e.target.checked, id)}
                 // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                 // checked={checkItems.includes(id) ? true : false}
-                />
+                className='deletbox'/>
         </div>
     );
 };
