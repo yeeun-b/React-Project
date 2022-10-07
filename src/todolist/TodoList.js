@@ -59,15 +59,25 @@ const TodoList = () => {
         if (checked) {
             // 체크박스 선택 시 선택된 id 배열에 추가
             setCheckItems(prev => [...prev, id]);
+            console.log(checkItems);
         } else {
             // 체크 해제 시 해제된 id 제외한 배열(필터)
             setCheckItems(checkItems.filter((el) => el !== id));
+            console.log(checkItems);
         }
     };
-
-    // 선택 삭제 기능
-    const onCheckRemove = (
-        console.log(checkItems)
+    
+    // 선택 삭제 기능(미구현)
+    const onCheckRemove = useCallback(
+        // console.log(checkItems)
+        id => { // 같은 id를 가진 항목을 배열에서 지움
+            setTodos(todos.filter(todo => todo.id !== checkItems));
+            console.log(checkItems.length);
+        },
+        [todos],
+        // 초기화
+        // setCheckItems([])
+        
     );
 
     // 고유값으로 사용될 id
